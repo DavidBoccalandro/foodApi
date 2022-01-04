@@ -15,7 +15,7 @@ const api = async () => {
 			summary: r.summary,
 			spoonacularScore: r.spoonacularScore,
 			healthScore: r.healthScore,
-			analizedInstructions: r.analyzedInstructions[0].steps, // STEPS is an object's array that contain the step by step for cook
+			analizedInstructions: r.analyzedInstructions, // array with 1 single object> the steps property is an array with multiple objects> in each object, there is a "step" property which is a string
 			image: r.image,
 			diets: r.diets,
 		};
