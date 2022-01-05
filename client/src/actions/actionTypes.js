@@ -1,0 +1,3 @@
+export const GET_ALL_RECIPES= "GET_ALL_RECIPES";
+export const GET_DETAILS = "GET_DETAILS";
+export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
