@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { GET_ALL_RECIPES, GET_DETAILS, SEARCH_BY_NAME} from './actionTypes';
 
-export function getAllRecipies(){
+export function getAllRecipes(){
     return async function(dispatch){
         try {const res = await axios.get('http://localhost:3001/recipes');
         return dispatch({
