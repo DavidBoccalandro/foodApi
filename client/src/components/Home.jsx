@@ -21,10 +21,8 @@ function Home() {
             <SearchBar/>
             <div>
                 <select>
-                    <option value="az">A-Z</option>
-                    <option value="za">Z-A</option>
-                </select>
-                <select>
+                    <option value="az">Alphabetical A-Z</option>
+                    <option value="za">Alphabetical Z-A</option>
                     <option value="Top Rank">Top Rank</option>
                     <option value="Low Rank">Low Rank</option>
                 </select>
@@ -34,7 +32,7 @@ function Home() {
             </div>
             <div>
                 {
-                    allRecipes.map(r=>{
+                    allRecipes?.map(r=>{
                         return (
                                 <CardRecipe
                                     id={r.id}
@@ -46,7 +44,7 @@ function Home() {
                                             ? r.diets.map((d) => d.name)
                                             : r.diets.map((d) => d)
                                     }
-                                ></CardRecipe>
+                                />
                             );
                     })
                 }
