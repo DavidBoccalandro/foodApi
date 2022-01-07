@@ -19,19 +19,20 @@ function FormCreateRecipe() {
 	});
 
 
-    // const titles = {
-	// 	Title: "Title",
-	// 	Summary: "Summary",
-	// 	Score: "0-100",
-	// 	Healthy: "0-100",
-	// 	Instructions: "Instructions",
-	// 	Image: "URL",
-	// };
+    const titles = {  // object invented for titles and placeholders
+		Title: "Title",
+		Summary: "Summary",
+		Score: "0-100",
+		Healthy: "0-100",
+		Instructions: "Instructions",
+		Image: "URL",
+	};
 
-	const KEYS = Object.keys(input);
-	// const VALUES = Object.values(titles);
+	const KEYS = Object.keys(titles);
+	const VALUES = Object.values(titles);
 
 	var keyForm = 1;
+    var iValue = 0;
 
 	function handleChange(e) {
 		e.preventDefault();
@@ -79,13 +80,6 @@ function FormCreateRecipe() {
 
     console.log(diets)
 
-    // var dietsFilter = [];
-	// for (var i = 0; i <= diets.length; i++) {
-	// 	if (diets[i].name.length <= 1) {
-	// 		continue;
-	// 	}
-	// 	dietsFilter.push(diets[i]);
-	// }
 
 
 	return (
@@ -106,7 +100,7 @@ function FormCreateRecipe() {
 									</label>
 								</div>
 								<input
-									// placeholder={VALUES.map((e) => e)}
+									placeholder={VALUES[iValue++]}
 									type="text"
 									name={e}
 									value={input.e}
