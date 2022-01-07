@@ -13,11 +13,13 @@ router.get("/",async(req,res)=>{
     const dietList = diets.join(",").split(",");
 
     for(let i = 0; i < dietList.length; i++){
-        await Diets.findOrCreate({
-            where: {
-                name: dietList[i],
-            }
-        })
+        if(dietList[i].length > 2){
+            await Diets.findOrCreate({
+                where: {
+                    name: dietList[i],
+                }
+            })
+        }
     }
 
     const allDiets = await Diets.findAll();
