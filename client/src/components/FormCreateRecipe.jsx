@@ -28,11 +28,14 @@ function FormCreateRecipe() {
 		Image: "URL",
 	};
 
-	const KEYS = Object.keys(titles);
+	const KEYS = Object.keys(input);
+	KEYS.pop()
 	const VALUES = Object.values(titles);
+	const KEYStitles = Object.keys(titles);
 
 	var keyForm = 1;
-    var iValue = 0;
+    var iKeys = 0;
+	var iValue = 0;
 
 	function handleChange(e) {
 		e.preventDefault();
@@ -96,7 +99,7 @@ function FormCreateRecipe() {
 							<div key={++keyForm}>
 								<div>
 									<label>
-										<h2>{e}</h2>
+										<h2>{KEYStitles[iKeys++]}</h2>
 									</label>
 								</div>
 								<input

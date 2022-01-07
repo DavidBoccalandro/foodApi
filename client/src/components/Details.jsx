@@ -32,13 +32,14 @@ function Details() {
 						: details[0]?.diets.map((d) => <div key={++divKey}>{d}</div>)}
 					</div>
 					<hr></hr>
+					<h2>Summary</h2>
 					{details[0]?.summary? <div dangerouslySetInnerHTML={{__html: details[0]?.summary}}></div> : <div>There is no summary in this recipe</div>}
 					<h2>Score: {details[0]?.spoonacularScore}%</h2>
 					<h2>Healthy: {details[0]?.healthScore}%</h2>
 					<h4>
 						Step by Step:{" "}
 						<ol>
-							{details[0]?.fromDb? details[0]?.analizedInstructions?.map(e=> <li key={++divKey}>{e}</li>) : 
+							{details[0]?.fromDb? <li>{details[0]?.analizedInstructions}</li> : 
 							details[0]?.analizedInstructions[0]?.steps?.map(e=><li key={++divKey}>{e.step}</li>)
 							}
 						</ol>
