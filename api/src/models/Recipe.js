@@ -19,6 +19,7 @@ module.exports = (sequelize) => {
 		spoonacularScore: {
 			type: DataTypes.INTEGER,
 			allowNull: true,
+			defaultValue: 0,
 		},
 		healthScore: {
 			type: DataTypes.INTEGER,

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { getAllRecipes } from "../actions/index";
+import { getAllRecipes, alphabetOrRankOrder, goBackGetDetails } from "../actions/index";
 import { useSelector, useDispatch } from "react-redux";
 
 import SearchBar from "./SearchBar";
@@ -11,6 +11,10 @@ function Home() {
 	const dispatch = useDispatch();
 	const allRecipes = useSelector((state) => state.recipes);
 
+    useEffect(() => {
+		dispatch(goBackGetDetails()); // reinicio para que no re-renderice recipe anterior
+	}, [dispatch]);
+
 	useEffect(() => {
 		dispatch(getAllRecipes());
 	}, [dispatch]);
@@ -19,11 +23,25 @@ function Home() {
 	const recipesPerPage = 9;
 	const last = currentPage * recipesPerPage;
 	const first = last - recipesPerPage;
-	const allPagRecipes = allRecipes.slice(first, last);
+	const allPagRecipes = allRecipes.slice(first, last); // 0 a 9 excluido, por ende, de 0 a 8 incluido
+    const [orderByName, setOrderByName] = useState('')
 
 	const pagination = (numberOfPage) => {
 		setCurrentPage(numberOfPage);
 	};
+
+    function handleOrderByNameOrRank(e) {
+			e.preventDefault();
+			if (e.target.value === "default") {
+                dispatch(goBackGetDetails())
+				dispatch(getAllRecipes());
+				setOrderByName(`Ordenado ${e.target.value}`);
+			} else {
+				dispatch(alphabetOrRankOrder(e.target.value));
+				setCurrentPage(1);
+				setOrderByName(`Ordenado ${e.target.value}`);
+			}
+		}
 
 	return (
 		<div>
@@ -32,9 +50,11 @@ function Home() {
 			) : (
 				<div>
 					<NavLink to="/">Go Back</NavLink>
+					<NavLink to="/recipe/create"> Create NEW Recipe </NavLink>
 					<SearchBar />
 					<div>
-						<select>
+						<select onChange={(e)=>{handleOrderByNameOrRank(e)}}>
+                            <option value="default">Default</option>
 							<option value="az">Alphabetical A-Z</option>
 							<option value="za">Alphabetical Z-A</option>
 							<option value="Top Rank">Top Rank</option>

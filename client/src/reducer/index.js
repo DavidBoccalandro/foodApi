@@ -2,11 +2,16 @@ import {
 	GET_ALL_RECIPES,
 	GET_DETAILS,
 	SEARCH_BY_NAME,
+	ALPHABET_OR_RANK_ORDER,
+	GO_BACK_GET_DETAILS,
+	POST_NEW_RECIPE,
+	GET_DIETS,
 } from "../actions/actionTypes";
 
 const initialState = {
 	recipes: [],
 	details: [],
+	diets: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -26,6 +31,78 @@ function rootReducer(state = initialState, action) {
 				...state,
 				recipes: action.payload,
 			};
+		case ALPHABET_OR_RANK_ORDER:
+			if (action.payload === "az") {
+				const sortAz = state.recipes.sort((a, b) => {
+					if (a.title > b.title) {
+						return 1;
+					} else if (a.title < b.title) {
+						return -1;
+					} else {
+						return 0;
+					}
+				});
+				return {
+					...state,
+					recipes: sortAz,
+				};
+			} else if (action.payload === "za") {
+				const sortZa = state.recipes.sort((a, b) => {
+					if (a.title < b.title) {
+						return 1;
+					} else if (a.title > b.title) {
+						return -1;
+					} else {
+						return 0;
+					}
+				});
+				return {
+					...state,
+					recipes: sortZa,
+				};
+			} else if (action.payload === "Top Rank") {
+				const sortTop = state?.recipes?.sort((a, b) => {
+					if (a?.spoonacularScore < b?.spoonacularScore) {
+						return 1;
+					} else if (a?.spoonacularScore > b?.spoonacularScore) {
+						return -1;
+					} else {
+						return 0;
+					}
+				});
+				return {
+					...state,
+					recipes: sortTop,
+				};
+			} else {
+				const sortLow = state?.recipes?.sort((a, b) => {
+					if (a?.spoonacularScore > b?.spoonacularScore) {
+						return 1;
+					} else if (a?.spoonacularScore < b?.spoonacularScore) {
+						return -1;
+					} else {
+						return 0;
+					}
+				});
+				return {
+					...state,
+					recipes: sortLow,
+				};
+			}
+		case GO_BACK_GET_DETAILS:
+			return {
+				...state,
+				details: [],
+			};
+		case POST_NEW_RECIPE:
+			return {
+				...state,
+			};
+		case GET_DIETS:
+			return {
+				...state,
+				diets: action.payload,
+			}
 		default:
 			return state;
 	}
