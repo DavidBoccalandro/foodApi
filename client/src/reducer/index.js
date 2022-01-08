@@ -35,7 +35,12 @@ function rootReducer(state = initialState, action) {
 				recipes: action.payload,
 			};
 		case ALPHABET_OR_RANK_ORDER:
-			if (action.payload === "az") {
+			if(action.payload ==="default"){
+				return{
+					...state,
+					recipes: state.auxRecipes,
+				}
+			} else if (action.payload === "az") {
 				const sortAz = state.recipes.sort((a, b) => {
 					if (a.title > b.title) {
 						return 1;
@@ -108,6 +113,12 @@ function rootReducer(state = initialState, action) {
 			};
 		case FILTER_BY_DIET:
 			var filterByDiet =  [];
+			if(action.payload === "default"){
+				return {
+					...state,
+					recipes: state.auxRecipes,
+				}
+			}
 			for(var i = 0; i < state.auxRecipes?.length; i++ ){
 				if(state.auxRecipes[i].fromDb){
 					for(var j= 0; j < state.auxRecipes[i].diets.length; j++){

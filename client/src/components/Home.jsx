@@ -37,7 +37,7 @@ function Home() {
 	};
 
     function handleOrderByNameOrRank(e) {
-			e.preventDefault();
+			e.preventDefault(); 
 			if (e.target.value === "default") {
                 dispatch(goBackGetDetails())
 				dispatch(getAllRecipes());
@@ -75,6 +75,7 @@ function Home() {
 							<option value="Low Rank">Low Rank</option>
 						</select>
 						<select onChange={e=>{handleFilterByDiet(e)}}>
+							<option value="default">Default</option>
 							{
 								diets?.map(e=><option key={key++} value={e.name}>{e.name}</option>)
 							}

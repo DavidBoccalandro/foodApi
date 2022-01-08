@@ -41,13 +41,12 @@ function FormCreateRecipe() {
 		e.preventDefault();
 		setInput({
 			...input,
-			[e.target.name]: e.target.value,
+			[e.target.name]: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
 			diets: e.target.value,
 		});
 	}
 
 	function handleCheck(e) {
-		e.preventDefault();
 		if (e.target.checked) {
 			setInput({
 				...input,
