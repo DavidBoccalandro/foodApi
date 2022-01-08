@@ -8,6 +8,7 @@ import {
 	GO_BACK_GET_DETAILS,
 	POST_NEW_RECIPE,
     GET_DIETS,
+	FILTER_BY_DIET,
 } from "./actionTypes";
 
 export function getAllRecipes() {
@@ -105,4 +106,17 @@ export function postNewRecipe(payload) {
 			alert("Try Again");
 		}
 	};
+}
+
+export function filterByDiet(payload){
+	return async function (dispatch){
+		try{
+			return dispatch({
+				type: FILTER_BY_DIET,
+				payload,
+			})
+		}catch(e){
+			alert("Try Again")
+		}
+	}
 }

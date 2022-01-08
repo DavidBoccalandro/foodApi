@@ -6,12 +6,14 @@ import {
 	GO_BACK_GET_DETAILS,
 	POST_NEW_RECIPE,
 	GET_DIETS,
+	FILTER_BY_DIET,
 } from "../actions/actionTypes";
 
 const initialState = {
 	recipes: [],
 	details: [],
 	diets: [],
+	auxRecipes: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -20,6 +22,7 @@ function rootReducer(state = initialState, action) {
 			return {
 				...state,
 				recipes: action.payload,
+				auxRecipes: action.payload,
 			};
 		case GET_DETAILS:
 			return {
@@ -102,7 +105,28 @@ function rootReducer(state = initialState, action) {
 			return {
 				...state,
 				diets: action.payload,
+			};
+		case FILTER_BY_DIET:
+			var filterByDiet =  [];
+			for(var i = 0; i < state.auxRecipes?.length; i++ ){
+				if(state.auxRecipes[i].fromDb){
+					for(var j= 0; j < state.auxRecipes[i].diets.length; j++){
+						if (state.auxRecipes[i].diets[j].name === action.payload){
+							filterByDiet.push(state.auxRecipes[i])
+						}
+					}
+				}else{
+					for(var k=0; k < state.auxRecipes[i].diets.length; k++){
+						if(state.auxRecipes[i].diets[k] === action.payload){
+							filterByDiet.push(state.auxRecipes[i])
+						}
+					}
+				}
 			}
+			return {
+				...state,
+				recipes: filterByDiet,
+			};
 		default:
 			return state;
 	}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { getAllRecipes, alphabetOrRankOrder, goBackGetDetails } from "../actions/index";
+import { getAllRecipes, alphabetOrRankOrder, goBackGetDetails, filterByDiet, getDiets } from "../actions/index";
 import { useSelector, useDispatch } from "react-redux";
 
 import SearchBar from "./SearchBar";
@@ -10,6 +10,7 @@ import Pagination from "./Pagination";
 function Home() {
 	const dispatch = useDispatch();
 	const allRecipes = useSelector((state) => state.recipes);
+	const diets = useSelector((state) => state.diets);
 
     useEffect(() => {
 		dispatch(goBackGetDetails()); // reinicio para que no re-renderice recipe anterior
@@ -19,12 +20,17 @@ function Home() {
 		dispatch(getAllRecipes());
 	}, [dispatch]);
 
+	useEffect(() => {
+		dispatch(getDiets());
+	}, [dispatch]);
+
 	const [currentPage, setCurrentPage] = useState(1);
 	const recipesPerPage = 9;
 	const last = currentPage * recipesPerPage;
 	const first = last - recipesPerPage;
 	const allPagRecipes = allRecipes.slice(first, last); // 0 a 9 excluido, por ende, de 0 a 8 incluido
     const [orderByName, setOrderByName] = useState('')
+	const [filterDiet, setFilterDiet] = useState("");
 
 	const pagination = (numberOfPage) => {
 		setCurrentPage(numberOfPage);
@@ -42,6 +48,14 @@ function Home() {
 				setOrderByName(`Ordenado ${e.target.value}`);
 			}
 		}
+	
+	function handleFilterByDiet(e){
+		e.preventDefault();
+		setFilterDiet(e.target.value)
+		dispatch(filterByDiet(e.target.value))
+	}
+
+	var key = 1;
 
 	return (
 		<div>
@@ -60,8 +74,10 @@ function Home() {
 							<option value="Top Rank">Top Rank</option>
 							<option value="Low Rank">Low Rank</option>
 						</select>
-						<select>
-							<option value="Diets">Diets</option>
+						<select onChange={e=>{handleFilterByDiet(e)}}>
+							{
+								diets?.map(e=><option key={key++} value={e.name}>{e.name}</option>)
+							}
 						</select>
 					</div>
                     <Pagination recipesPerPage={recipesPerPage} allRecipes={allRecipes.length} pagination={pagination}/>
