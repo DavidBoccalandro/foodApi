@@ -9,6 +9,7 @@ function Pagination(props) {
 		) {
 			pageNumbers.push(i);
 		}
+        
     return (
             <nav>
                 <ul>

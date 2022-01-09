@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=The+Nautigal:wght@400;700&display=swap');
+
+.img{
+    height: 750px;
+    width:  1520px;
+    position: relative;
+    display: block;
+}
+
+.go{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 25%;
+    padding: 20px;
+    text-align: center;
+    color: #c4a021;
+    background:transparent;
+    border: 10px solid #c4a021;
+    border-radius: 6px;
+    color: white;
+    padding: 16px;
+    text-align: center;
+    display: inline-block;
+    font-size: 80px;
+    margin: 0;
+    transition-duration: 2s;
+    cursor: pointer;
+    font-family: 'The Nautigal', cursive;
+    font-weight:bold;
+    box-shadow: rgb(17, 10, 9);
+}
+
+.go:hover {
+    background-color: #c4a021;
+    color: white;
+}

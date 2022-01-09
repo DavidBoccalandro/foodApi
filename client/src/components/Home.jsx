@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import SearchBar from "./SearchBar";
 import CardRecipe from "./CardRecipe";
 import Pagination from "./Pagination";
+import loadingfood from '../images/loadingfood.gif'
 
 function Home() {
 	const dispatch = useDispatch();
@@ -60,7 +61,7 @@ function Home() {
 	return (
 		<div>
 			{allRecipes.length === 0 ? (
-				<div>Loading...</div>
+				<div><img src ={loadingfood} alt="loading gif" height="750px" width= "1520px" /></div>
 			) : (
 				<div>
 					<NavLink to="/">Go Back</NavLink>
