@@ -1,0 +1,32 @@
+.select {
+    display:flex;
+    flex-direction:row;
+    width:42.8%;
+    height:30px;
+    margin-left: 35%;
+    margin-right: auto;
+    margin-top: 35px;
+    }
+
+.selectOrder{
+    margin: 0;
+    width: 35%;
+}
+
+.selectFilter{
+    margin: 0;
+    width: 35%;
+}
+
+.option {
+    padding:0 30px 0 10px;
+    min-height:35px;
+    display:flex;
+    align-items:center;
+    background:rgb(129, 125, 125);
+    border-top:rgb(0, 0, 0) solid 1px;
+    position:relative;
+    top:0;
+    width: 100%;
+    box-sizing:border-box;
+}

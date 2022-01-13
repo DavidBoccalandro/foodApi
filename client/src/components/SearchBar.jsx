@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchByName } from "../actions/index";
+import styles from "./SearchBar.module.css";
+
 
 function SearchBar() {
 	const dispatch = useDispatch();
@@ -18,13 +20,22 @@ function SearchBar() {
 	}
 
 	return (
-		<div>
-			<input
-				type="text"
-				placeholder="Search..."
-				onChange={(e) => handleChange(e)}
-			></input>
-			<button type="submit" onClick={(e) => handleSubmit(e)}>Search</button>
+		<div className={styles.wrap}>
+			<div className={styles.search}>
+				<input
+				className={styles.searchTerm}
+					type="text"
+					placeholder="Search..."
+					onChange={(e) => handleChange(e)}
+				></input>
+				<button
+					className={styles.searchButton}
+					type="submit"
+					onClick={(e) => handleSubmit(e)}
+				>
+					Search
+				</button>
+			</div>
 		</div>
 	);
 }

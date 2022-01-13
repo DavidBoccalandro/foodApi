@@ -7,6 +7,7 @@ import SearchBar from "./SearchBar";
 import CardRecipe from "./CardRecipe";
 import Pagination from "./Pagination";
 import loadingfood from '../images/loadingfood.gif'
+import styles from "./Home.module.css";
 
 function Home() {
 	const dispatch = useDispatch();
@@ -61,28 +62,53 @@ function Home() {
 	return (
 		<div>
 			{allRecipes.length === 0 ? (
-				<div><img src ={loadingfood} alt="loading gif" height="750px" width= "1520px" /></div>
+				<div>
+					<img
+						src={loadingfood}
+						alt="loading gif"
+						height="750px"
+						width="1520px"
+					/>
+				</div>
 			) : (
 				<div>
 					<NavLink to="/">Go Back</NavLink>
 					<NavLink to="/recipe/create"> Create NEW Recipe </NavLink>
-					<SearchBar />
 					<div>
-						<select onChange={(e)=>{handleOrderByNameOrRank(e)}}>
-                            <option value="default">Default</option>
-							<option value="az">Alphabetical A-Z</option>
-							<option value="za">Alphabetical Z-A</option>
-							<option value="Top Rank">Top Rank</option>
-							<option value="Low Rank">Low Rank</option>
-						</select>
-						<select onChange={e=>{handleFilterByDiet(e)}}>
-							<option value="default">Default</option>
-							{
-								diets?.map(e=><option key={key++} value={e.name}>{e.name}</option>)
-							}
-						</select>
+						<SearchBar />
+						<div className={styles.select}>
+							<select
+								onChange={(e) => {
+									handleOrderByNameOrRank(e);
+								}}
+								className={styles.selectOrder}
+							>
+								<option className={styles.option} value="default">Default</option>
+								<option className={styles.option} value="az">Alphabetical A-Z</option>
+								<option className={styles.option} value="za">Alphabetical Z-A</option>
+								<option className={styles.option} value="Top Rank">Top Rank</option>
+								<option className={styles.option} value="Low Rank">Low Rank</option>
+							</select>
+							<select
+								onChange={(e) => {
+									handleFilterByDiet(e);
+								}}
+								className={styles.selectFilter}
+							>
+								<option className={styles.option} value="default">Default</option>
+								{diets?.map((e) => (
+									<option className={styles.option} key={key++} value={e.name}>
+										{e.name}
+									</option>
+								))}
+							</select>
+						</div>
 					</div>
-                    <Pagination recipesPerPage={recipesPerPage} allRecipes={allRecipes.length} pagination={pagination}/>
+					<Pagination
+						recipesPerPage={recipesPerPage}
+						allRecipes={allRecipes.length}
+						pagination={pagination}
+					/>
 					<div>
 						{allPagRecipes?.map((r) => {
 							return (
@@ -100,7 +126,11 @@ function Home() {
 							);
 						})}
 					</div>
-                    <Pagination recipesPerPage={recipesPerPage} allRecipes={allRecipes.length} pagination={pagination}/>
+					<Pagination
+						recipesPerPage={recipesPerPage}
+						allRecipes={allRecipes.length}
+						pagination={pagination}
+					/>
 				</div>
 			)}
 		</div>
