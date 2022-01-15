@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from "./Pagination.module.css";
 
 function Pagination(props) {
     const pageNumbers=[];
@@ -11,16 +12,14 @@ function Pagination(props) {
 		}
         
     return (
-            <nav>
-                <ul>
-                    {pageNumbers &&
-                        pageNumbers?.map((i) => (
-                            <li key={i}>
-                                <button onClick={() => props.pagination(i)}>{i}</button>
-                            </li>
-                        ))}
-                </ul>
-            </nav>
+            <ul className={styles.ul}>
+                {pageNumbers &&
+                    pageNumbers?.map((i) => (
+                        <li className={styles.li} key={i}>
+                            <button className={styles.button} onClick={() => props.pagination(i)}>{i}</button>
+                        </li>
+                    ))}
+            </ul>
 		);
 }
 

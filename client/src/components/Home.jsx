@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { getAllRecipes, alphabetOrRankOrder, goBackGetDetails, filterByDiet, getDiets } from "../actions/index";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -72,7 +72,7 @@ function Home() {
 				</div>
 			) : (
 				<div>
-					<NavLink to="/">Go Back</NavLink>
+					<Link className={styles.goback} to="/">Go Back</Link>
 					<NavLink to="/recipe/create"> Create NEW Recipe </NavLink>
 					<div>
 						<SearchBar />
