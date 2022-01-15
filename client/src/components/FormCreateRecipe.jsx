@@ -4,6 +4,25 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postNewRecipe, getDiets } from "../actions/index";
 
+
+export function validate(input) {
+    let errors = {};
+    if (!input.title) {
+        errors.title = 'Title is required';
+    }
+    if (!input.summary) {
+        errors.summary = 'Summary is required';
+    }
+    if (!/^[1-9][0-9]?$|^100$/g.test(input.spoonacularScore)) {
+        errors.spoonacularScore = 'Score is required and must be in a range from 1 - 100';
+    }
+    if (!/^[1-9][0-9]?$|^100$/g.test(input.healthScore)) {
+        errors.healthScore = 'Health Score is required and must be in a range from 1 - 100';
+    }
+    return errors;
+};
+
+
 function FormCreateRecipe() {
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -17,6 +36,7 @@ function FormCreateRecipe() {
 		image: "",
 		diets: [],
 	});
+	const [errors, setErrors] = useState({});
 
 
     const titles = {  // object invented for titles and placeholders
@@ -30,8 +50,8 @@ function FormCreateRecipe() {
 
 	const KEYS = Object.keys(input);
 	KEYS.pop()
-	const VALUES = Object.values(titles);
 	const KEYStitles = Object.keys(titles);
+	const VALUES = Object.values(titles);
 
 	var keyForm = 1;
     var iKeys = 0;
@@ -44,6 +64,10 @@ function FormCreateRecipe() {
 			[e.target.name]: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
 			diets: e.target.value,
 		});
+		let objError = validate({
+            ...input, [e.target.name]: e.target.value
+        });
+        setErrors(objError);
 	}
 
 	function handleCheck(e) {
@@ -108,6 +132,11 @@ function FormCreateRecipe() {
 									value={input.e}
 									onChange={(e) => handleChange(e)}
 								></input>
+								{
+									errors[e] && (
+										<p>{errors[e]}</p>
+									)
+                            	}
 							</div>
 						))}
 					</div>{" "}
@@ -128,7 +157,7 @@ function FormCreateRecipe() {
 							></input>
 						</div>
 					))}
-					<button>Create Recipe!!!</button>
+					<button disabled={Object.keys(errors).length > 0 ? true : false} type ='submit'>Create Recipe!!!</button>
 				</div>
 			</form>
 			<Link to="/home">

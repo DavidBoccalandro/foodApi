@@ -71,10 +71,10 @@ function Home() {
 					/>
 				</div>
 			) : (
-				<div>
-					<Link className={styles.goback} to="/">Go Back</Link>
-					<NavLink to="/recipe/create"> Create NEW Recipe </NavLink>
-					<div>
+				<div className={styles.cardGrid}>
+					<Link className={styles.goback} to="/"><div> Go Back! </div></Link>
+					<Link to="/recipe/create" className={styles.createRecipe}><div> Create NEW Recipe </div></Link>
+					<div className={styles.allSelects}>
 						<SearchBar />
 						<div className={styles.select}>
 							<select
@@ -109,7 +109,7 @@ function Home() {
 						allRecipes={allRecipes.length}
 						pagination={pagination}
 					/>
-					<div>
+					<div className={styles.cardGrid}>
 						{allPagRecipes?.map((r) => {
 							return (
 								<CardRecipe

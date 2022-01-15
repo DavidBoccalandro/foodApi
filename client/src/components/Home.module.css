@@ -1,4 +1,9 @@
+.allSelects{
+    margin-bottom: 100px;
+}
+
 .select {
+    position: absolute;
     display:flex;
     flex-direction:row;
     width:42.8%;
@@ -6,6 +11,9 @@
     margin-left: 35%;
     margin-right: auto;
     margin-top: 35px;
+    margin-bottom: 100px;
+    top: 25px;
+    left: 0px
     }
 
 .selectOrder{
@@ -31,7 +39,7 @@
     box-sizing:border-box;
 }
 
-.goback{
+/* .goback{
     position:fixed;
     top: 90%;
     left: 8%;
@@ -60,4 +68,61 @@
     background-color: #c4a021;
     color: white;
     box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 10rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+} */
+
+.createRecipe {
+    position: absolute;
+    left: 65.5%;
+    top: 2%;
+    width: 90px;
+    height: 80px;
+    border: 1px solid #000000;
+    background: #000000;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+.createRecipe:hover {
+    background-color: #FF1493;
+    color: white;
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 10rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.goback {
+    position: absolute;
+    left: 28.4%;
+    top: 2%;
+    width: 90px;
+    height: 80px;
+    border: 1px solid #000000;
+    background: #000000;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.goback:hover {
+    background-color: #FF1493;
+    color: white;
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 10rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 10%;
+    padding-top: 1rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    gap: 2rem;
 }
