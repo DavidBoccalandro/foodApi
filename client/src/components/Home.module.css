@@ -39,37 +39,6 @@
     box-sizing:border-box;
 }
 
-/* .goback{
-    position:fixed;
-    top: 90%;
-    left: 8%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    width: 10%;
-    padding: 10px;
-    text-align: center;
-    color: #c4a021;
-    background:transparent;
-    border: 10px solid #c4a021;
-    border-radius: 100%;
-    color: white;
-    text-align: center;
-    display: inline-block;
-    font-size: 50px;
-    margin: 0;
-    transition-duration: 1s;
-    cursor: pointer;
-    font-family: 'The Nautigal', cursive;
-    font-weight:bold;
-    box-shadow: rgb(82, 38, 31);
-}
-
-.goback:hover {
-    background-color: #c4a021;
-    color: white;
-    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 10rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
-} */
-
 .createRecipe {
     position: absolute;
     left: 65.5%;
@@ -84,7 +53,7 @@
     border-radius: 10px;
     cursor: pointer;
     font-size: 18px;
-  }
+}
 
 .createRecipe:hover {
     background-color: #FF1493;
@@ -109,7 +78,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
 
 .goback:hover {
     background-color: #FF1493;

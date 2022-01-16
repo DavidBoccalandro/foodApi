@@ -1,0 +1,53 @@
+.card{
+    background:linear-gradient(rgba(0, 0, 0, 0.486),rgba(59, 16, 54, 0.75));
+    width: 280px;
+    height: 350px;
+    display: flex;
+    margin: 10px;
+    border-radius: 5px; 
+    box-shadow: 0px 10px 20px 0px rgba(255, 0, 179, 0.3);
+    -webkit-box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    color:#ffffff;
+} 
+.card:hover{
+    z-index: 1;
+    transform: scale(1.20);
+    filter:brightness(120%);
+    float: inline-start;
+}
+
+.linkedname{
+    font-family: "Montserrat";
+    font-size: 17px;
+    text-decoration: none;
+    color: white;
+    filter:brightness(110%);
+    position: relative;
+    text-align: center;
+}
+
+.linkedname:hover{
+    filter:brightness(1000%)
+}
+
+.extras{
+    color: whitesmoke;
+    display: inline;
+    margin-top: 0;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.img{
+    position:relative;
+    align-self: center;
+    padding: 0px;
+    height: 180px;
+    width: 280px;
+    filter: 
+    contrast(120%) 
+}

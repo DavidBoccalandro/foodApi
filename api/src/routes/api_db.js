@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { Recipe, Diets } = require("../db");
 
-const { API_KEY, API_KEY2, API_KEY3 } = process.env;
+const { API_KEY } = process.env;
 const URL = "https://api.spoonacular.com/recipes/";
 
 const api = async () => {

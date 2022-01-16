@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getDetails } from "../actions/index";
+import styles from './Details.module.css'
 
 function Details() {
 	const details = useSelector((state) => state.details);
@@ -19,10 +20,10 @@ function Details() {
 	var divKey = Math.floor(100000 + Math.random() * 900000);
 	
 	return (
-		<div>
+		<div className={styles.card}>
 			{details.length ? (
 				<div>
-					<img src={details[0]?.image} alt="Img Not Found" />
+					<img className={styles.img} src={details[0]?.image} alt="Img Not Found" />
 					<h1>{details[0]?.title}</h1>
 					<hr></hr>
 					<h2>Diets</h2>
@@ -34,8 +35,10 @@ function Details() {
 					<hr></hr>
 					<h2>Summary</h2>
 					{details[0]?.summary? <div dangerouslySetInnerHTML={{__html: details[0]?.summary}}></div> : <div>There is no summary in this recipe</div>}
+					<hr></hr>
 					<h2>Score: {details[0]?.spoonacularScore}%</h2>
 					<h2>Healthy: {details[0]?.healthScore}%</h2>
+					<hr></hr>
 					<h4>
 						Step by Step:{" "}
 						<ol>
@@ -44,7 +47,7 @@ function Details() {
 							}
 						</ol>
 					</h4>
-					<NavLink to="/home">Go Back</NavLink>
+					<NavLink className={styles.goback} to="/home">Go Back</NavLink>
 				</div>
 			) : (
 				<div>Loading...</div>

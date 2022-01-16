@@ -9,8 +9,8 @@ router.get("/", async (req, res) => {
 		const recipesTotal = await allRecipesApiDb();
 
 		if (!name) {
-			return res.status(200).send(recipesTotal); // if i don't have query, i'm returning all, like a global get
-		} else {                                       // else, i want to locate all recipes with any coincidence in their characters
+			return res.status(200).send(recipesTotal); 
+		} else {                                       
 			var nameLower = name.toLowerCase();
 			var recipesFilter = [];
 			for (var i = 0; i < recipesTotal.length; i++) {

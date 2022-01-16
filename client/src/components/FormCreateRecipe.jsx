@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postNewRecipe, getDiets } from "../actions/index";
+import styles from './FormCreateRecipe.module.css'
 
 
 export function validate(input) {
@@ -109,7 +110,7 @@ function FormCreateRecipe() {
 
 
 	return (
-		<div>
+		<div className={styles.card}>
 			<h1>Create NEW Recipe</h1>
 			<form
 				onSubmit={(e) => {
@@ -157,11 +158,11 @@ function FormCreateRecipe() {
 							></input>
 						</div>
 					))}
-					<button disabled={Object.keys(errors).length > 0 ? true : false} type ='submit'>Create Recipe!!!</button>
+					<button className={styles.goback} disabled={Object.keys(errors).length > 0 ? true : false} type ='submit'>Create Recipe!!!</button>
 				</div>
 			</form>
-			<Link to="/home">
-				<button>Go Home</button>
+			<Link className={styles.goback} to="/home">
+				Go Home
 			</Link>
 		</div>
 	);
