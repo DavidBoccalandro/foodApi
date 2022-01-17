@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getAllRecipes, alphabetOrRankOrder, goBackGetDetails, filterByDiet, getDiets } from "../actions/index";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -28,8 +28,8 @@ function Home() {
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const recipesPerPage = 9;
-	const last = currentPage * recipesPerPage;
-	const first = last - recipesPerPage;
+	const last = currentPage * recipesPerPage; 
+	const first = last - recipesPerPage; 
 	const allPagRecipes = allRecipes.slice(first, last); // 0 a 9 excluido, por ende, de 0 a 8 incluido
     const [orderByName, setOrderByName] = useState('')
 	const [filterDiet, setFilterDiet] = useState("");
@@ -126,11 +126,6 @@ function Home() {
 							);
 						})}
 					</div>
-					<Pagination
-						recipesPerPage={recipesPerPage}
-						allRecipes={allRecipes.length}
-						pagination={pagination}
-					/>
 				</div>
 			)}
 		</div>

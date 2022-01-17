@@ -34,13 +34,13 @@ function FormCreateRecipe() {
 		spoonacularScore: 0,
 		healthScore: 0,
 		analizedInstructions: "",
-		image: "",
+		image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy5rJEQTO00gHXNv-va888Y5VUYX3NPMDTMFGPwkItSxbgbcZ7RfRBC7FX9l5_4l14IdM&usqp=CAU",
 		diets: [],
 	});
 	const [errors, setErrors] = useState({});
 
-
-    const titles = {  // object invented for titles and placeholders
+	const titles = {
+		// object invented for titles and placeholders
 		Title: "Title",
 		Summary: "Summary",
 		Score: "0-100",
@@ -50,25 +50,27 @@ function FormCreateRecipe() {
 	};
 
 	const KEYS = Object.keys(input);
-	KEYS.pop()
+	KEYS.pop();
 	const KEYStitles = Object.keys(titles);
 	const VALUES = Object.values(titles);
 
 	var keyForm = 1;
-    var iKeys = 0;
+	var iKeys = 0;
 	var iValue = 0;
 
 	function handleChange(e) {
 		e.preventDefault();
 		setInput({
 			...input,
-			[e.target.name]: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
+			[e.target.name]:
+				e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
 			diets: e.target.value,
 		});
 		let objError = validate({
-            ...input, [e.target.name]: e.target.value
-        });
-        setErrors(objError);
+			...input,
+			[e.target.name]: e.target.value,
+		});
+		setErrors(objError);
 	}
 
 	function handleCheck(e) {
@@ -105,52 +107,51 @@ function FormCreateRecipe() {
 		dispatch(getDiets());
 	}, [dispatch]);
 
-    console.log(diets)
-
-
+	console.log(diets);
 
 	return (
 		<div className={styles.card}>
-			<h1>Create NEW Recipe</h1>
 			<form
+				className={styles.form}
 				onSubmit={(e) => {
 					handleSubmit(e);
 				}}
 			>
 				<div>
+					<h1>Create NEW Recipe</h1>
 					<div>
 						{KEYS.map((e) => (
 							<div key={++keyForm}>
 								<div>
 									<label>
-										<h2>{KEYStitles[iKeys++]}</h2>
+										<h2 className={styles.h2}>{KEYStitles[iKeys++]}</h2>
+										{errors[e] && <h6>{errors[e]}</h6>}
 									</label>
 								</div>
 								<input
+									className={styles.input}
 									placeholder={VALUES[iValue++]}
 									type="text"
 									name={e}
 									value={input.e}
 									onChange={(e) => handleChange(e)}
 								></input>
-								{
-									errors[e] && (
-										<p>{errors[e]}</p>
-									)
-                            	}
 							</div>
 						))}
 					</div>{" "}
 				</div>
 				<div>
+					<h3>Type of diet:</h3>
+					<div className={styles.grid}>
 					{diets?.map((d) => (
-						<div key={++keyForm * 1000}>
+						<div className={styles.check} key={++keyForm * 1000}>
 							<div>
-								<label>
-									<h2>{d.name}</h2>
+								<label className={styles.label}>
+									<h4>{d.name}</h4>
 								</label>
 							</div>
 							<input
+								className={styles.checkok}
 								onChange={(e) => handleCheck(e)}
 								type="checkbox"
 								name={d.name}
@@ -158,7 +159,14 @@ function FormCreateRecipe() {
 							></input>
 						</div>
 					))}
-					<button className={styles.goback} disabled={Object.keys(errors).length > 0 ? true : false} type ='submit'>Create Recipe!!!</button>
+					</div>
+					<button
+						className={styles.create}
+						disabled={Object.keys(errors).length > 0 ? true : false}
+						type="submit"
+					>
+						Create Recipe!
+					</button>
 				</div>
 			</form>
 			<Link className={styles.goback} to="/home">

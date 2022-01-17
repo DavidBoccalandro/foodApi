@@ -20,7 +20,7 @@
     float: inline-start;
 }
 
-.linkedname{
+.title{
     font-family: "Montserrat";
     font-size: 17px;
     text-decoration: none;
@@ -30,7 +30,7 @@
     text-align: center;
 }
 
-.linkedname:hover{
+.title:hover{
     filter:brightness(1000%)
 }
 
@@ -46,7 +46,7 @@
     position:relative;
     align-self: center;
     padding: 0px;
-    height: 180px;
+    height: 168px;
     width: 280px;
     filter: 
     contrast(120%) 

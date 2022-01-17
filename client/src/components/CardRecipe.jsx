@@ -7,11 +7,13 @@ function CardRecipe(props) {
 	return (
 		<div className={styles.card}>
 			<Link to={`/home/detail/${props.id}`}>
-				<h2 className={styles.linkedname}>{props.title}</h2>
 				<img className={styles.img} alt="Img Not Found" src={props.image} />
+				<h2 className={styles.title}>{props.title}</h2>
 				<div>
 					{props.diets.map((d) => (
-						<h5 className={styles.extras} key={++keyDiets}>{d} </h5>
+						<h5 className={styles.extras} key={++keyDiets}>{d} 
+						<br/>
+						</h5>
 					))}
 				</div>
 			</Link>
